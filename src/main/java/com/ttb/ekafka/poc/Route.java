@@ -11,7 +11,7 @@ public class Route extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("timer://counter?fixedRate=true&period=1000")
+        from("timer://counter?fixedRate=true&period={{timer.interval}}")
                 .routeId("data-generator")
                 .process(counter)
                 .to("kafka:{{kafka.topic.name}}")
