@@ -14,7 +14,7 @@ public class Route extends RouteBuilder {
         from("timer://counter?fixedRate=true&period=1000")
                 .routeId("data-generator")
                 .process(counter)
-                .log("${body}")
-                .to("kafka:{{kafka.topic.name}}?clientId=dc1.p1");
+                .to("kafka:{{kafka.topic.name}}")
+                .log("${body}");
     }
 }
